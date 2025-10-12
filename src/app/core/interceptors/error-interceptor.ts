@@ -1,0 +1,18 @@
+import { inject } from '@angular/core';
+import { HttpInterceptorFn } from '@angular/common/http';
+import { catchError, throwError } from 'rxjs';
+import { Router } from '@angular/router';
+
+export const errorInterceptor: HttpInterceptorFn = (req, next) => {
+  const router = inject(Router);
+
+  return next(req).pipe(
+    catchError(err => {
+      if (err.status === 401) router.navigate(['/auth/login']);
+      else if (err.status === 404) router.navigate(['/error/not-found']);
+      else if (err.status >= 500) router.navigate(['/error/server-error']);
+
+      return throwError(() => err);
+    })
+  );
+};

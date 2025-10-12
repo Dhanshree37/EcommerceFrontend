@@ -1,18 +1,17 @@
-import { enableProdMode } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideHttpClient } from '@angular/common/http';
-import { provideRouter } from '@angular/router';
 import { AppComponent } from './app/app.component';
-import { environment } from './environments/environment';
-import { routes } from './app/app-routing.module'; // update for standalone
-
-if (environment.production) {
-  enableProdMode();
-}
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+import { routes } from './app/app.routes';
+import { ErrorHandler } from '@angular/core';
+import { GlobalErrorHandler } from './app/core/error-handler/global-error-handler';
+import { authInterceptor } from './app/core/interceptors/auth-interceptor';
+import { errorInterceptor } from './app/core/interceptors/error-interceptor';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideHttpClient(),
-    provideRouter(routes)  // your routes
+    provideRouter(routes),
+    provideHttpClient(withInterceptors([authInterceptor, errorInterceptor])),
+    { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ]
-}).catch(err => console.error(err));
+});
