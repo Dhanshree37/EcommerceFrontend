@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { map, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -9,8 +9,7 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   private apiUrl = environment.apiBaseUrl + '/auth';
   public accessToken: string | null = null;
-
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   register(userData: any) {
     return this.http.post(`${this.apiUrl}/register`, userData);
@@ -18,7 +17,10 @@ export class AuthService {
 
   login(credentials: any) {
     return this.http
-      .post<{ accessToken: string; user: any }>(`${this.apiUrl}/login`, credentials)
+      .post<{ accessToken: string; user: any }>(
+        `${this.apiUrl}/login`,
+        credentials
+      )
       .pipe(
         tap((res) => {
           this.accessToken = res.accessToken;
