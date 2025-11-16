@@ -1,0 +1,224 @@
+/* --- Layout Wrapper --- */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--mat-sys-surface); /* beige */
+}
+
+/* --- Main Card --- */
+.login-card {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 900px;
+  box-sizing: border-box;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Left Section --- */
+.left-section {
+  width: 50%;
+  padding: 40px;
+  background: #fff;
+  background-image: url("/assets/svg/pattern.svg");
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Overlay to reduce the visibility of the background image */
+.left-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(243, 242, 242, 0.6);
+  backdrop-filter: blur(0.5px);
+  z-index: 1;
+}
+
+/* Make sure content stays ABOVE the overlay */
+.left-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #444;
+}
+
+.illustration {
+  width: 60%;
+  align-self: center;
+}
+
+/* --- Right Section --- */
+.right-section {
+  width: 50%;
+  padding: 50px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 100%;
+  max-width: 330px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* Forgot + Remember Row */
+.flex-row {
+  display: flex;
+  align-items: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.forgot-password {
+  font-size: 14px;
+  color: var(--mat-sys-primary);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Login Button */
+.login-btn {
+  margin-top: 25px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--mat-sys-primary) !important; /* Teal */
+  color: #000 !important; /* Black text */
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* Divider */
+.divider {
+  margin: 20px 0;
+  text-align: center;
+  color: #888;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #ddd;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+/* Google Button */
+.google-btn {
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: 0.25s ease;
+  background: #fff;
+}
+
+.google-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--mat-sys-primary);
+}
+
+.google-icon {
+  width: 15px;
+}
+
+/* Signup */
+.signup-text {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.signup-text a {
+  color: var(--mat-sys-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* --- RESPONSIVENESS FIX --- */
+@media (max-width: 900px) {
+  .login-card {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .left-section,
+  .right-section {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .form {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+::ng-deep {
+  .google-btn .mdc-button__label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #000;
+  }
+  .mat-mdc-card {
+    padding: 0 !important;
+  }
+}
