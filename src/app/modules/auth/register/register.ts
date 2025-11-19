@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MATERIAL_IMPORTS } from 'src/app/shared/material/material.imports';
@@ -8,6 +9,7 @@ import { MATERIAL_IMPORTS } from 'src/app/shared/material/material.imports';
     MATERIAL_IMPORTS,
     ReactiveFormsModule,
     FormsModule,
+    CommonModule
   ],
   templateUrl: './register.html',
   styleUrl: './register.scss'

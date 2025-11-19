@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--mat-sys-surface); /* beige */
+  background: var(--mat-sys-surface);
 }
 
 /* --- Main Card --- */
@@ -31,7 +31,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align:center;
+  text-align: center;
 }
 
 /* Overlay to reduce the visibility of the background image */
@@ -40,7 +40,7 @@
   position: absolute;
   inset: 0;
   background: rgba(243, 242, 242, 0.6);
-  backdrop-filter: blur(0.5px);
+  backdrop-filter: blur(1px);
   opacity: 100%;
   z-index: 1;
 }
@@ -99,8 +99,8 @@
   margin-top: 25px;
   height: 46px;
   border-radius: 12px;
-  background: var(--mat-sys-tertiary) !important; /* rose pink */
-  color: #000 !important; /* Black text */
+  background: var(--mat-sys-tertiary) !important;
+  color: #000 !important;
   font-weight: 600;
   transition: 0.25s ease;
 }
@@ -181,9 +181,9 @@
     flex-direction: column;
     width: 100%;
   }
-.two-column {
+  .two-column {
     flex-direction: column;
-    gap: 0; /* optional: cleaner vertical spacing */
+    gap: 0;
   }
   .left-section,
   .right-section {
@@ -206,9 +206,25 @@
     gap: 10px;
     color: #000;
   }
+
   .mat-mdc-card {
     padding: 0 !important;
   }
+
+  .mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+  .mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+  .mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+    border-color: var(--mat-sys-tertiary) !important;
+  }
+
+  .mat-mdc-form-field .mdc-floating-label--float-above {
+    color: var(--mat-sys-tertiary) !important;
+  }
+
+  .mat-mdc-outlined-button .mat-mdc-button-persistent-ripple::before {
+    background-color: var(
+      --mat-sys-secondary,
+      var(--mat-sys-tertiary)
+    ) !important;
+  }
 }
-
-

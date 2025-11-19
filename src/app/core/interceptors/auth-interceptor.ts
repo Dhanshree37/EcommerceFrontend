@@ -39,6 +39,7 @@ export const authInterceptor: HttpInterceptorFn = (
   next: HttpHandlerFn
 ) => {
   const auth = inject(AuthService);
+  const token = auth.accessToken;
 
   // Clone the request to always send cookies
   req = req.clone({ withCredentials: true });
@@ -46,6 +47,10 @@ export const authInterceptor: HttpInterceptorFn = (
   // Bypass the refresh endpoint itself
   if (req.url.includes('/auth/refresh')) {
     return next(req);
+  }
+
+  if (token) {
+    req = addAuthHeader(req, token);
   }
 
   return next(req).pipe(

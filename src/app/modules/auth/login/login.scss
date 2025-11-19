@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--mat-sys-surface); /* beige */
+  background: var(--mat-sys-surface);
 }
 
 /* --- Main Card --- */
@@ -114,8 +114,8 @@
   margin-top: 25px;
   height: 46px;
   border-radius: 12px;
-  background: var(--mat-sys-primary) !important; /* Teal */
-  color: #000 !important; /* Black text */
+  background: var(--mat-sys-primary) !important;
+  color: #000 !important;
   font-weight: 600;
   transition: 0.25s ease;
 }
@@ -220,5 +220,8 @@
   }
   .mat-mdc-card {
     padding: 0 !important;
+  }
+  .mat-mdc-form-field {
+    margin-top: 5px;
   }
 }
